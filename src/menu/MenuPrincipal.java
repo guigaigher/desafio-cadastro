@@ -1,20 +1,15 @@
 package menu;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import exception.IdadeInvalidaException;
+import exception.NomeInvalidoException;
+import exception.PesoInvalidoException;
+import model.Pet;
+import service.PetService;
+
 import java.util.Scanner;
 
 public class MenuPrincipal {
     public void exibir() {
-        try (BufferedReader br = new BufferedReader(new FileReader("formulario.txt"));) {
-            String linha;
-            while ((linha = br.readLine()) != null) {
-                System.out.println(linha);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
@@ -28,9 +23,10 @@ public class MenuPrincipal {
                     "5.Listar pets por algum critério(idade,nome,raça)\n" +
                     "6.Sair\n");
             System.out.print("Digite o número da opção: ");
-            String entrada=scanner.nextLine();
+            String entrada = scanner.nextLine();
+            System.out.println();
 
-            try{
+            try {
                 opcao = Integer.parseInt(entrada);
             } catch (NumberFormatException e) {
                 opcao = 0;
@@ -39,7 +35,21 @@ public class MenuPrincipal {
             if (opcao <= 0 || opcao > 6) {
                 System.out.println("Número inválido!!! Tente novamente");
             }
+
+            if (opcao == 1) {
+                PetService petService = new PetService();
+                try {
+                    Pet pet = petService.cadastrarPet(scanner);
+                } catch (NomeInvalidoException e) {
+                    System.out.println(e.getMessage());
+                } catch (PesoInvalidoException e) {
+                    System.out.println(e.getMessage());
+                } catch (IdadeInvalidaException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         }
+
         scanner.close();
     }
 }
