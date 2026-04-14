@@ -5,6 +5,7 @@ import model.Pet;
 import model.SexoPet;
 import model.TipoPet;
 import util.LeituraFormulario;
+import util.ValidacaoPet;
 
 
 import java.util.List;
@@ -12,12 +13,11 @@ import java.util.Scanner;
 
 public class PetService {
 
-    private static final String NAO_INFORMADO = "NÃO INFORMADO";
-
     public Pet cadastrarPet(Scanner scanner) {
         LeituraFormulario leituraFormulario = new LeituraFormulario();
         leituraFormulario.exibirFormulario();
         List<String> perguntas = leituraFormulario.perguntaPorPergunta();
+        ValidacaoPet validacaoPet = new ValidacaoPet();
 
         System.out.println("\n---Iniciando Coleta de Dados do Pet---");
 
@@ -26,6 +26,7 @@ public class PetService {
         String nome = scanner.nextLine();
         System.out.print("Sobrenome: ");
         String sobrenome = scanner.nextLine();
+        validacaoPet.validacaoNome(nome, sobrenome);
 
 
         System.out.println(perguntas.get(2));
@@ -56,24 +57,24 @@ public class PetService {
         String rua = scanner.nextLine();
         System.out.print("Número da Casa: ");
         String numeroCasa = scanner.nextLine();
-        int numeroCasaInt = Integer.parseInt(numeroCasa);
+        String validacaoNumeroCasa = validacaoPet.validacaoNumeroCasa(numeroCasa);
 
 
         System.out.println(perguntas.get(5));
         String idadeAproximada = scanner.nextLine();
-        double idadeAproximadaDouble = Double.parseDouble(idadeAproximada);
+        double validacaoIdade = validacaoPet.validacaoIdade(idadeAproximada);
 
 
         System.out.println(perguntas.get(6));
         String pesoAproximado = scanner.nextLine();
-        double pesoAproximadoDouble = Double.parseDouble(pesoAproximado);
-
+        double validacaoPeso = validacaoPet.validacaoPeso(pesoAproximado);
 
         System.out.println(perguntas.get(7));
         String raca = scanner.nextLine();
+        String validacaoRaca = validacaoPet.validacaoRaca(raca);
 
-        Endereco endereco = new Endereco(cidade, rua, numeroCasaInt);
+        Endereco endereco = new Endereco(cidade, rua, validacaoNumeroCasa);
 
-        return new Pet(nome, sobrenome, raca, idadeAproximadaDouble, pesoAproximadoDouble, tipo, endereco, sexo);
+        return new Pet(nome, sobrenome, validacaoRaca, validacaoIdade, validacaoPeso, tipo, endereco, sexo);
     }
 }

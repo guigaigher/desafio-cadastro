@@ -3,9 +3,9 @@ package model;
 public class Endereco {
     private String cidade;
     private String rua;
-    private int numeroCasa;
+    private String numeroCasa;
 
-    public Endereco(String cidade, String rua, int numeroCasa) {
+    public Endereco(String cidade, String rua, String numeroCasa) {
         this.cidade = cidade;
         this.rua = rua;
         this.numeroCasa = numeroCasa;
@@ -27,11 +27,11 @@ public class Endereco {
         this.rua = rua;
     }
 
-    public int getNumeroCasa() {
+    public String getNumeroCasa() {
         return numeroCasa;
     }
 
-    public void setNumeroCasa(int numeroCasa) {
+    public void setNumeroCasa(String numeroCasa) {
         this.numeroCasa = numeroCasa;
     }
 }

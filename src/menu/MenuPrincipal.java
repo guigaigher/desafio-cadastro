@@ -3,6 +3,7 @@ package menu;
 import exception.IdadeInvalidaException;
 import exception.NomeInvalidoException;
 import exception.PesoInvalidoException;
+import exception.RacaInvalidaException;
 import model.Pet;
 import service.PetService;
 
@@ -45,6 +46,8 @@ public class MenuPrincipal {
                 } catch (PesoInvalidoException e) {
                     System.out.println(e.getMessage());
                 } catch (IdadeInvalidaException e) {
+                    System.out.println(e.getMessage());
+                } catch (RacaInvalidaException e) {
                     System.out.println(e.getMessage());
                 }
             }
