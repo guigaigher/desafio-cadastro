@@ -13,7 +13,7 @@ public class ValidacaoPet {
     private static final String NAO_INFORMADO = "NÃO INFORMADO(A)";
 
     public void validacaoNome(String nome, String sobrenome) {
-        String regex = "\\W";
+        String regex = "\\p{Punct}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcherNome = pattern.matcher(nome);
         Matcher matcherSobrenome = pattern.matcher(sobrenome);
@@ -38,7 +38,7 @@ public class ValidacaoPet {
             throw new IdadeInvalidaException("IDADE " + NAO_INFORMADO);
         }
         double idadeDouble = Double.parseDouble(idade.replace(",", "."));
-        if (idadeDouble > 20) {
+        if (idadeDouble < 0 || idadeDouble > 20) {
             throw new IdadeInvalidaException("Idade inválida!!");
         }
         return idadeDouble;
@@ -56,7 +56,7 @@ public class ValidacaoPet {
     }
 
     public String validacaoRaca(String raca) {
-        String regex = "\\W";
+        String regex = "[\\p{Punct}&&[^-]]";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcherRaca = pattern.matcher(raca);
 
