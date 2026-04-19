@@ -4,6 +4,7 @@ import model.Endereco;
 import model.Pet;
 import model.SexoPet;
 import model.TipoPet;
+import util.ArmazenamentoPet;
 import util.LeituraFormulario;
 import util.ValidacaoPet;
 
@@ -75,6 +76,11 @@ public class PetService {
 
         Endereco endereco = new Endereco(cidade, rua, validacaoNumeroCasa);
 
-        return new Pet(nome, sobrenome, validacaoRaca, validacaoIdade, validacaoPeso, tipo, endereco, sexo);
+        Pet pet = new Pet(nome, sobrenome, validacaoRaca, validacaoIdade, validacaoPeso, tipo, endereco, sexo);
+
+        ArmazenamentoPet armazenamentoPet = new ArmazenamentoPet();
+        armazenamentoPet.salvarPet(pet);
+
+        return pet;
     }
 }
