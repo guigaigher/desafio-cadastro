@@ -9,8 +9,8 @@ public class MenuBusca {
         System.out.println("Antes de dizer por quais critérios você quer buscar, digite qual o tipo de Pet:");
         System.out.println("1 - Cachorro");
         System.out.println("2 - Gato");
-        byte tipoPet = scanner.nextByte();
-        scanner.nextLine();
+        String tP = scanner.nextLine();
+        byte tipoPet = Byte.parseByte(tP);
         System.out.println("Agora digite como você quer buscar pelo Pet?");
         System.out.println("1 - Nome/Sobrenome");
         System.out.println("2 - Sexo");
@@ -20,8 +20,8 @@ public class MenuBusca {
         System.out.println("6 - Peso");
         System.out.println("7 - Peso e Idade");
         System.out.println("8 - Raça");
-        byte criterio = scanner.nextByte();
-        scanner.nextLine();
+        String crit = scanner.nextLine();
+        byte criterio = Byte.parseByte(crit);
         BuscaService buscaService = new BuscaService();
         buscaService.buscarPet(scanner, tipoPet, criterio);
     }

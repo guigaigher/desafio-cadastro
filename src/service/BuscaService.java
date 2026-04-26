@@ -36,6 +36,9 @@ public class BuscaService {
                         contador++;
                     }
                 }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
+                }
                 break;
             case 2:
                 System.out.println("Digite macho ou fêmea para buscar o sexo do Pet cadastrado");
@@ -46,6 +49,9 @@ public class BuscaService {
                         exibicaoPet.exibirPet(pet, contador);
                         contador++;
                     }
+                }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
                 }
                 break;
             case 3:
@@ -62,6 +68,9 @@ public class BuscaService {
                         contador++;
                     }
                 }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
+                }
                 break;
             case 4:
                 System.out.println("Qual a idade do Pet cadastrado?");
@@ -72,6 +81,9 @@ public class BuscaService {
                         exibicaoPet.exibirPet(pet, contador);
                         contador++;
                     }
+                }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
                 }
                 break;
             case 5:
@@ -87,6 +99,9 @@ public class BuscaService {
                         contador++;
                     }
                 }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
+                }
                 break;
             case 6:
                 System.out.println("Qual o peso do Pet cadastrado?");
@@ -97,6 +112,9 @@ public class BuscaService {
                         exibicaoPet.exibirPet(pet, contador);
                         contador++;
                     }
+                }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
                 }
                 break;
             case 7:
@@ -113,6 +131,9 @@ public class BuscaService {
                         contador++;
                     }
                 }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
+                }
                 break;
             case 8:
                 System.out.println("Qual a raça do Pet cadastrado?");
@@ -122,6 +143,9 @@ public class BuscaService {
                         exibicaoPet.exibirPet(pet, contador);
                         contador++;
                     }
+                }
+                if (contador == 1) {
+                    System.out.println("Nenhum Pet encontrado!!");
                 }
                 break;
         }
