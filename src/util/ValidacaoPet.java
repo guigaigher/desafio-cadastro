@@ -12,16 +12,15 @@ import java.util.regex.Pattern;
 public class ValidacaoPet {
     private static final String NAO_INFORMADO = "NÃO INFORMADO(A)";
 
-    public void validacaoNome(String nome, String sobrenome) {
+    public void validacaoNome(String nomeCompleto) {
         String regex = "\\p{Punct}";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcherNome = pattern.matcher(nome);
-        Matcher matcherSobrenome = pattern.matcher(sobrenome);
+        Matcher matcherNome = pattern.matcher(nomeCompleto);
 
-        if (nome.isBlank() || sobrenome.isBlank()) {
-            throw new NomeInvalidoException("NOME OU SOBRENOME " + NAO_INFORMADO);
-        } else if (matcherNome.find() || matcherSobrenome.find()) {
-            throw new NomeInvalidoException("Nome ou sobrenome inválidos!!");
+        if (nomeCompleto.isBlank()) {
+            throw new NomeInvalidoException("NOME " + NAO_INFORMADO);
+        } else if (matcherNome.find()) {
+            throw new NomeInvalidoException("Nome inválido!!");
         }
     }
 

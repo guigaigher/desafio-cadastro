@@ -1,40 +1,30 @@
 package model;
 
 public class Pet{
-    private String nome;
-    private String sobrenome;
-    private String raca;
+    private String nomeCompleto;
+    private final TipoPet tipoPet;
+    private final SexoPet sexoPet;
+    private Endereco endereco;
     private double idadeAproximada;
     private double pesoAproximado;
-    private final TipoPet tipoPet;
-    private Endereco endereco;
-    private final SexoPet sexoPet;
+    private String raca;
 
-    public Pet(String nome, String sobrenome, String raca, double idadeAproximada, double pesoAproximado, TipoPet tipoPet, Endereco endereco, SexoPet sexoPet) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.raca = raca;
+    public Pet(String nomeCompleto, TipoPet tipoPet, SexoPet sexoPet, Endereco endereco, double idadeAproximada, double pesoAproximado, String raca) {
+        this.nomeCompleto = nomeCompleto;
+        this.tipoPet = tipoPet;
+        this.sexoPet = sexoPet;
+        this.endereco = endereco;
         this.idadeAproximada = idadeAproximada;
         this.pesoAproximado = pesoAproximado;
-        this.tipoPet = tipoPet;
-        this.endereco = endereco;
-        this.sexoPet = sexoPet;
+        this.raca = raca;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
 
     public String getRaca() {

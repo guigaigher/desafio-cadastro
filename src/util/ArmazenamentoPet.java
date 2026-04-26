@@ -7,10 +7,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ArmazenamentoPet {
-    private final File pasta = new File("../petsCadastrados");
 
     public void criarPasta() {
-        pasta.mkdir();
+        Constantes.pasta.mkdir();
     }
 
     private String formatarNumero(double valor, String unidade) {
@@ -24,12 +23,12 @@ public class ArmazenamentoPet {
     public void salvarPet(Pet pet) {
         criarPasta();
         String dataFormatada = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm"));
-        String nomeArquivo = dataFormatada + "-" + pet.getNome().toUpperCase() + pet.getSobrenome().toUpperCase() + ".TXT";
-        File arquivo = new File(pasta, nomeArquivo);
+        String nomeArquivo = dataFormatada + "-" + pet.getNomeCompleto().toUpperCase() + ".TXT";
+        File arquivo = new File(Constantes.pasta, nomeArquivo);
         String tipo = pet.getTipoPet().toString().toLowerCase();
         String sexo = pet.getSexoPet().toString().toLowerCase();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo))) {
-            bw.write("1 - " + pet.getNome() + " " + pet.getSobrenome());
+            bw.write("1 - " + pet.getNomeCompleto());
             bw.newLine();
             bw.write("2 - " + Character.toUpperCase(tipo.charAt(0)) + tipo.substring(1));
             bw.newLine();

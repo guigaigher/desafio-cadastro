@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class MenuPrincipal {
     public void exibir() {
-
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
         while (opcao != 6) {
@@ -50,6 +49,9 @@ public class MenuPrincipal {
                 } catch (RacaInvalidaException e) {
                     System.out.println(e.getMessage());
                 }
+            } else if (opcao == 5) {
+                MenuBusca menuBusca = new MenuBusca();
+                menuBusca.exibirBusca(scanner);
             }
         }
 

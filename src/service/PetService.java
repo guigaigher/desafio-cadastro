@@ -4,11 +4,11 @@ import model.Endereco;
 import model.Pet;
 import model.SexoPet;
 import model.TipoPet;
-import util.ArmazenamentoPet;
-import util.LeituraFormulario;
-import util.ValidacaoPet;
+import util.*;
 
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,11 +23,9 @@ public class PetService {
         System.out.println("\n---Iniciando Coleta de Dados do Pet---");
 
         System.out.println(perguntas.get(1));
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
-        System.out.print("Sobrenome: ");
-        String sobrenome = scanner.nextLine();
-        validacaoPet.validacaoNome(nome, sobrenome);
+        System.out.print("Nome completo: ");
+        String nomeCompleto = scanner.nextLine();
+        validacaoPet.validacaoNome(nomeCompleto);
 
 
         System.out.println(perguntas.get(2));
@@ -76,11 +74,24 @@ public class PetService {
 
         Endereco endereco = new Endereco(cidade, rua, validacaoNumeroCasa);
 
-        Pet pet = new Pet(nome, sobrenome, validacaoRaca, validacaoIdade, validacaoPeso, tipo, endereco, sexo);
+        Pet pet = new Pet(nomeCompleto, tipo, sexo, endereco, validacaoIdade, validacaoPeso, validacaoRaca);
 
         ArmazenamentoPet armazenamentoPet = new ArmazenamentoPet();
         armazenamentoPet.salvarPet(pet);
 
         return pet;
+    }
+
+    public List<Pet> buscarPet() {
+        LeituraPet leituraPet = new LeituraPet();
+        List<Pet> lista = new ArrayList<>();
+        File[] arquivos = Constantes.pasta.listFiles();
+        if (arquivos == null) {
+            return lista;
+        }
+        for (File arquivo : arquivos) {
+            lista.add(leituraPet.leituraPet(arquivo));
+        }
+        return lista;
     }
 }
