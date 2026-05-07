@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BuscaService {
-    public void buscarPet(Scanner scanner, byte tipoPet, byte criterio) {
+    public List<Pet> buscarPet(Scanner scanner, byte tipoPet, byte criterio) {
         PetService petService = new PetService();
         List<Pet> pets = petService.buscarPet();
         List<Pet> petsFiltrados = new ArrayList<>();
@@ -149,5 +149,6 @@ public class BuscaService {
                 }
                 break;
         }
+        return petsFiltrados;
     }
 }

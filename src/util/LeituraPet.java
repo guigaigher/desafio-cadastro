@@ -27,7 +27,9 @@ public class LeituraPet {
             e.printStackTrace();
         }
         ConversorPet cp = new ConversorPet();
+        Pet pet= new Pet(lista.get(0), cp.conversorTipoPet(lista.get(1)), cp.conversorSexoPet(lista.get(2)), cp.conversorEndereco(lista.get(3)), cp.conversorIdade(lista.get(4)), cp.conversorPeso(lista.get(5)), lista.get(6));
 
-        return new Pet(lista.get(0), cp.conversorTipoPet(lista.get(1)), cp.conversorSexoPet(lista.get(2)), cp.conversorEndereco(lista.get(3)), cp.conversorIdade(lista.get(4)), cp.conversorPeso(lista.get(5)), lista.get(6));
+        pet.setCaminhoArquivo(arquivo.getPath());
+        return pet;
     }
 }

@@ -94,4 +94,69 @@ public class PetService {
         }
         return lista;
     }
+
+    public Pet alterarPet(Scanner scanner, Pet pet) {
+        ValidacaoPet validacaoPet = new ValidacaoPet();
+        System.out.println("\n---Iniciando Alteração de Dados do Pet---");
+
+        System.out.println("Deseja alterar o nome? (S/N)");
+        String resposta = scanner.nextLine();
+        if (resposta.equalsIgnoreCase("s")) {
+            System.out.print("Digite o novo nome: ");
+            String nomeCompleto = scanner.nextLine();
+            validacaoPet.validacaoNome(nomeCompleto);
+            pet.setNomeCompleto(nomeCompleto);
+        }
+
+
+        System.out.println("Deseja alterar o endereço? (S/N)");
+        resposta = scanner.nextLine();
+        if (resposta.equalsIgnoreCase("s")) {
+            System.out.println("Informe o novo endereço");
+            System.out.print("Cidade: ");
+            String cidade = scanner.nextLine();
+            System.out.print("Rua: ");
+            String rua = scanner.nextLine();
+            System.out.print("Número da Casa: ");
+            String numeroCasa = scanner.nextLine();
+            String validacaoNumeroCasa = validacaoPet.validacaoNumeroCasa(numeroCasa);
+            Endereco endereco = new Endereco(cidade, rua, validacaoNumeroCasa);
+            pet.setEndereco(endereco);
+        }
+
+
+        System.out.println("Deseja alterar a idade? (S/N)");
+        resposta = scanner.nextLine();
+        if (resposta.equalsIgnoreCase("s")) {
+            System.out.print("Digite a nova idade: ");
+            String idadeAproximada = scanner.nextLine();
+            double validacaoIdade = validacaoPet.validacaoIdade(idadeAproximada);
+            pet.setIdadeAproximada(validacaoIdade);
+        }
+
+        System.out.println("Deseja alterar o peso? (S/N)");
+        resposta = scanner.nextLine();
+        if (resposta.equalsIgnoreCase("s")) {
+            System.out.print("Digite o novo peso: ");
+            String pesoAproximado = scanner.nextLine();
+            double validacaoPeso = validacaoPet.validacaoPeso(pesoAproximado);
+            pet.setPesoAproximado(validacaoPeso);
+        }
+
+        System.out.println("Deseja alterar a raça? (S/N)");
+        resposta = scanner.nextLine();
+        if (resposta.equalsIgnoreCase("s")) {
+            System.out.print("Digite a nova raça: ");
+            String raca = scanner.nextLine();
+            String validacaoRaca = validacaoPet.validacaoRaca(raca);
+            pet.setRaca(validacaoRaca);
+        }
+
+        ArmazenamentoPet armazenamentoPet = new ArmazenamentoPet();
+
+        armazenamentoPet.deletarPet(pet);
+
+        armazenamentoPet.salvarPet(pet);
+        return pet;
+    }
 }

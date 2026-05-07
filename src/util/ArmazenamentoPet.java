@@ -12,7 +12,7 @@ public class ArmazenamentoPet {
         Constantes.pasta.mkdir();
     }
 
-    private String formatarNumero(double valor, String unidade) {
+    public String formatarNumero(double valor, String unidade) {
         if (valor % 1 == 0) {
             return (int) valor + " " + unidade;
         } else {
@@ -44,6 +44,14 @@ public class ArmazenamentoPet {
             bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        pet.setCaminhoArquivo(arquivo.getPath());
+    }
+
+    public void deletarPet(Pet pet) {
+        File caminhoArquivo = new File(pet.getCaminhoArquivo());
+        if (!caminhoArquivo.delete()) {
+            System.err.println("Erro ao deletar o arquivo: " + pet.getCaminhoArquivo());
         }
     }
 }

@@ -8,6 +8,7 @@ public class Pet{
     private double idadeAproximada;
     private double pesoAproximado;
     private String raca;
+    private String caminhoArquivo;
 
     public Pet(String nomeCompleto, TipoPet tipoPet, SexoPet sexoPet, Endereco endereco, double idadeAproximada, double pesoAproximado, String raca) {
         this.nomeCompleto = nomeCompleto;
@@ -65,5 +66,13 @@ public class Pet{
 
     public SexoPet getSexoPet() {
         return sexoPet;
+    }
+
+    public String getCaminhoArquivo() {
+        return caminhoArquivo;
+    }
+
+    public void setCaminhoArquivo(String caminhoArquivo) {
+        this.caminhoArquivo = caminhoArquivo;
     }
 }

@@ -1,11 +1,13 @@
 package menu;
 
+import model.Pet;
 import service.BuscaService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuBusca {
-    public void exibirBusca(Scanner scanner) {
+    public List<Pet> exibirBusca(Scanner scanner) {
         System.out.println("Antes de dizer por quais critérios você quer buscar, digite qual o tipo de Pet:");
         System.out.println("1 - Cachorro");
         System.out.println("2 - Gato");
@@ -23,6 +25,6 @@ public class MenuBusca {
         String crit = scanner.nextLine();
         byte criterio = Byte.parseByte(crit);
         BuscaService buscaService = new BuscaService();
-        buscaService.buscarPet(scanner, tipoPet, criterio);
+        return buscaService.buscarPet(scanner, tipoPet, criterio);
     }
 }

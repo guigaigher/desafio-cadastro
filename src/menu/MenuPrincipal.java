@@ -7,6 +7,7 @@ import exception.RacaInvalidaException;
 import model.Pet;
 import service.PetService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -49,12 +50,32 @@ public class MenuPrincipal {
                 } catch (RacaInvalidaException e) {
                     System.out.println(e.getMessage());
                 }
-            } else if (opcao == 5) {
+            } else if (opcao == 2) {
+                MenuBusca menuBusca = new MenuBusca();
+                List<Pet> pets = menuBusca.exibirBusca(scanner);
+                if (!pets.isEmpty()) {
+                    System.out.print("Digite o número do pet que deseja alterar: ");
+                    int numeroPet = Integer.parseInt(scanner.nextLine());
+                    Pet petEscolhido = pets.get(numeroPet - 1);
+
+                    PetService petService = new PetService();
+                    try {
+                        petService.alterarPet(scanner, petEscolhido);
+                    } catch (NomeInvalidoException e) {
+                        System.out.println(e.getMessage());
+                    } catch (PesoInvalidoException e) {
+                        System.out.println(e.getMessage());
+                    } catch (IdadeInvalidaException e) {
+                        System.out.println(e.getMessage());
+                    } catch (RacaInvalidaException e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+            }else if (opcao == 5) {
                 MenuBusca menuBusca = new MenuBusca();
                 menuBusca.exibirBusca(scanner);
             }
         }
-
         scanner.close();
     }
 }
